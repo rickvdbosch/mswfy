@@ -1,0 +1,16 @@
+<p>Please select any file to upload below. Would be nice if it's something we can parse, though.</p>
+<form #fileUploadForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <h3>Upload file</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10">
+        <input type="file" #uploadControl class="form-control" id="file" name="file" required (change)="onFileChanged()" />
+    </div>
+    <div class="col-2 text-right">
+      <button type="submit" class="btn btn-primary" [disabled]="!fileUploadForm.form.valid || submitted">Upload</button>
+    </div>
+  </div>
+</form>

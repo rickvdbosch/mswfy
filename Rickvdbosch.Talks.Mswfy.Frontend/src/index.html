@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Making Serverless Work For You</title>
+  <base href="/">
+  <meta name="author" content="Rick van den Bosch" />
+  <meta name="keywords" content="azure,serverless,event grid,service bus,azure functions," />
+  <meta name="description" content="A web frontend to support my 'Making Serverless Work For You' talk." />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/upload">Upload a file</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/scale">Now SCALE!</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container" style="padding-bottom: 100px;">
+    <div class="row">
+      <h1 title="Making Serverless Work For You">MSWFY</h1>
+    </div>
+    <app-root></app-root>
+  </div>
+  <footer class="fixed-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <a target="_blank" href="https://azure.microsoft.com/en-us/services/functions/"><img
+              src="assets/images/af.png" /></a>
+          <a target="_blank" href="https://docs.microsoft.com/en-us/azure/storage/"><img
+              src="assets/images/as.png" /></a>
+          <a target="_blank" href="https://azure.microsoft.com/en-us/services/event-grid/"><img
+              src="assets/images/eg.png" /></a>
+          <a target="_blank" href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions"><img
+              src="assets/images/eg.png" /></a>
+          <a target="_blank" href="https://azure.microsoft.com/en-us/services/logic-apps/"><img
+              src="assets/images/sbq.png" /></a>
+          <a target="_blank" href="https://flow.microsoft.com/"><img src="assets/images/mf.png" /></a>
+          <a target="_blank" href="https://angular.io"><img src="assets/images/angular.png" /></a>
+        </div>
+        <div class="col-6 text-right">
+          <a href="https://www.rickvandenbosch.net" target="_blank">Rick van den Bosch</a> - 2019
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
