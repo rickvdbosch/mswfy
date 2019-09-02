@@ -18,7 +18,6 @@ namespace Rickvdbosch.Talks.Mswfy.Common.Azure.Storage
         private const string FILES_CONTAINER = "files";
         private const string IMAGES_CONTAINER = "images";
         private const string CONTENT_CONTAINER = "content";
-        private const string UPLOAD_CONTAINER = "upload";
 
         #endregion
 

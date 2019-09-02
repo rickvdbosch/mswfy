@@ -1,9 +1,5 @@
-using System;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.ServiceBus;
 using Microsoft.Extensions.Logging;
 
 namespace Rickvdbosch.Talks.Mswfy.Functions
