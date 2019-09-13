@@ -12,7 +12,7 @@ export class UploadComponent implements OnInit {
   public file: File;
   public submitted: boolean = false;
 
-  @ViewChild('uploadControl') fileControl;
+  @ViewChild('uploadControl', null) fileControl;
 
   constructor(private filesService: FilesService) { }
 
