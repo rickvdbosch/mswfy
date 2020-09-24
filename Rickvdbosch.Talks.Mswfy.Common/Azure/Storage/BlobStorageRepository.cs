@@ -1,15 +1,15 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-using Microsoft.WindowsAzure.Storage.Blob;
+using Azure.Storage.Blobs;
 
 namespace Rickvdbosch.Talks.Mswfy.Common.Azure.Storage
 {
-    public class BlobStorageRepository : BaseStorageRepository
+    public class BlobStorageRepository
     {
         #region Fields
 
-        private CloudBlobClient _blobClient;
+        private string _connectionString;
 
         #endregion
 
@@ -23,57 +23,44 @@ namespace Rickvdbosch.Talks.Mswfy.Common.Azure.Storage
 
         #region Constructors
 
-        public BlobStorageRepository(string connectionString) : base(connectionString)
+        public BlobStorageRepository(string connectionString)
         {
-            _blobClient = _storageAccount.CreateCloudBlobClient();
+            _connectionString = connectionString;
         }
 
         #endregion
 
-        public async Task<Stream> GetFileAsStreamAsync(string fileName)
+        public async Task<Stream> GetFileAsStreamAsync(string filename)
         {
-            var container = _blobClient.GetContainerReference(FILES_CONTAINER);
-            var blob = container.GetBlockBlobReference(fileName);
+            var blobClient = new BlobClient(_connectionString, FILES_CONTAINER, filename);
             var stream = new MemoryStream();
-            await blob.DownloadToStreamAsync(stream);
+            await blobClient.DownloadToAsync(stream);
             stream.Seek(0, SeekOrigin.Begin);
 
             return stream;
         }
 
-        public async Task<string> GetFileContentAsync(string fileName)
+        public async Task<string> GetFileContentAsync(string filename)
         {
-            var container = _blobClient.GetContainerReference(CONTENT_CONTAINER);
-            var blob = container.GetBlockBlobReference(fileName);
+            var blobClient = new BlobClient(_connectionString, CONTENT_CONTAINER, filename);
+            var stream = new MemoryStream();
+            await blobClient.DownloadToAsync(stream);
+            stream.Seek(0, SeekOrigin.Begin);
+            using var reader = new StreamReader(stream);
 
-            return await blob.DownloadTextAsync();
+            return await reader.ReadToEndAsync();
         }
 
         public async Task DeleteImage(string filename)
         {
-            var container = _blobClient.GetContainerReference(IMAGES_CONTAINER);
-            var blob = container.GetBlockBlobReference(filename);
-
-            if (await blob.ExistsAsync())
-            {
-                await blob.DeleteAsync();
-            }
+            var blobClient = new BlobClient(_connectionString, IMAGES_CONTAINER, filename);
+            await blobClient.DeleteIfExistsAsync();
         }
 
         public async Task AddFileAsync(string containerName, string filename, Stream file)
         {
-            var container = _blobClient.GetContainerReference(containerName);
-            await container.CreateIfNotExistsAsync();
-            var blob = container.GetBlockBlobReference(filename);
-
-            if (await blob.ExistsAsync())
-            {
-                // TODO: handle this?
-            }
-            else
-            {
-                await blob.UploadFromStreamAsync(file);
-            }
+            var blobClient = new BlobClient(_connectionString, containerName, filename);
+            await blobClient.UploadAsync(file);
         }
     }
 }
